@@ -5,15 +5,7 @@ public class Iterativos extends SimpleProcess{
         super(id);
     }
 
-    @Override
-    public void iterativos(){
-        if(this.id == 4){
-            this.id = 4;
-        }
-        else{
-            this.id = 0;
-        }
-    }
+    
 
 
 }

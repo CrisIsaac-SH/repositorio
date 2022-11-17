@@ -5,14 +5,5 @@ public class Condicionales extends SimpleProcess{
         super(id);
 
     }
-    @Override
-    public void condicionales(){
-        if(this.id == 3){
-            this.id = 3;
-        }
-        else{
-            this.id = 0;
-        }
-        
-    }
+    
 }

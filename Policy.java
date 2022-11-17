@@ -13,15 +13,11 @@ import java.util.concurrent.*;
  public abstract class Policy implements Enqueable {
 	/**aqui iran las cosas que yo agregue  */
 
-	protected ConcurrentLinkedQueue<SimpleProcess> cola1 = new ConcurrentLinkedQueue<>();
-
-	protected SimpleProcess[] processes;
-
 
 
 	////////////////////////
 	/** El campo size va a representar el numero de procesos activos, 
-	es decir, en la cola actualmente, en este momento 
+	es decir en la cola actualmente, en este momento 
         **/
 	protected int size;
 	/** El campo total va a representar el total de procesos que han sido ingresados a
@@ -51,9 +47,5 @@ import java.util.concurrent.*;
 		return totalProcesses;
 	}
 //////////////////////////////////////////
-	protected abstract void elementos();
-
-	protected abstract void elementosTotal();
-	 
-	protected abstract void sacadoTotal();
+	
 }

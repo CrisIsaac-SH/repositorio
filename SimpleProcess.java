@@ -35,12 +35,6 @@ public abstract class SimpleProcess {
 		return "[id:"+ this.id+"]";
 	}
 
-	public abstract void aritmetico();
-	
-	public abstract void inputoutput();
 
-	public abstract void condicionales();
-
-	public abstract void iterativos();
 
 }
