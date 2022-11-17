@@ -1,8 +1,9 @@
 public class InputOutput extends SimpleProcess{
-    protected int id;
+    
 
     public InputOutput(int id){
-        super(id);
+        super(id, SimpleProcess.IOTime);
+        this.nombre= "I/O";
 
     }
     

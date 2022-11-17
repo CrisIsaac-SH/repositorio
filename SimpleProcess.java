@@ -10,15 +10,27 @@ public abstract class SimpleProcess {
         **/
 	protected int id;
 	///////
-	protected int tiempo;
+	protected int time;
+
+	protected String nombre;
+
+	public   boolean isFree;
+	
+	public static int  AritmethicTime;
+	public static int  ConditionalTime;
+	public static int IOTime;
+	public static int IterativoTime;
 
 
 	/**
 		Inicializa el SimpleProcess con un id especifico.
 		@param id representa el id que se le asigna al SimpleProcess
 	**/	
-	public SimpleProcess(int id){
+	public SimpleProcess(int id, int time){
 		this.id = id;
+		this.time= time;
+		this.isFree= true;
+		
 	}
         /**
 		Devuelve el id del SimpleProcess
@@ -34,6 +46,19 @@ public abstract class SimpleProcess {
 	public String toString() {
 		return "[id:"+ this.id+"]";
 	}
+
+	/*
+	 * Proceso que devolvera si esta atendido un metodo
+	 */
+
+	 public boolean  isFinished(){
+		if (time>0) {
+			return false;
+		}
+		else{
+			return true;	
+		}  
+	 }
 
 
 

@@ -12,7 +12,7 @@ public interface Enqueable {
 	/** Remueve un proceso de la cola de procesos (el siguiente a
             ser atendido 
         **/
-	public void remove();
+	public void remove(SimpleProcess p);
 	
 	/** Devuelve el siguiente proceso a ser atendido. No lo remueve de la
             cola

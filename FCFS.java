@@ -1,39 +1,72 @@
+import java.io.Console;
 import java.util.concurrent.*;
 
-public class FCFS extends Policy{
-    int contador = 1;
-    ///agregue el contador para ver cuantos procesos entran a la cola1
+public class FCFS extends Policy {
 
-    public FCFS(SimpleProcess[] processes){
-        super(processes);
-        
-    }
+    private ConcurrentLinkedQueue<SimpleProcess> mainQue;
 
-    
-    @Override
-    protected void elementos(){
+    public FCFS() {
+        mainQue = new ConcurrentLinkedQueue<SimpleProcess>();
 
     }
 
     @Override
-    protected void elementosTotal(){
+    public void add(SimpleProcess p) {
+
+        mainQue.add(p);
+    }
+
+    @Override
+    public void remove(SimpleProcess p) {
+
+        mainQue.remove(p);
+    }
+
+    @Override
+    public SimpleProcess next() {
+        return mainQue.peek();
+    }
+
+    @Override
+    public void serveNext() {
+        SimpleProcess nextProcess = this.next();
+        if (nextProcess.isFree) {
+            try {
+                Thread.sleep(nextProcess.time * 1000);
+                System.out.println("Atendiendo al proceso Id:" + nextProcess.id + " Tipo " +nextProcess.nombre);
+                System.out.println("Tiempo que tomo " +  nextProcess.time);
+                nextProcess.time = 0;
+                
+
+
+
+                // Thread.sleep( RounRobinTime.time*1000) esto seria para round robin
+                // nextProcess.time= nextProcess.time- RoundRobinTime.time
+
+            } catch (InterruptedException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
 
     }
 
     @Override
-    protected void sacadoTotal(){
-
+    public boolean isEmpty() {
+       return  mainQue.isEmpty();
     }
 
-//no creo que sea necesario sacar de la cola creo
-    /**public void sacarCola(int size){
-       dequeue(this.contador); 
-    }*/
+    // no creo que sea necesario sacar de la cola creo
+    /**
+     * public void sacarCola(int size){
+     * dequeue(this.contador);
+     * }
+     */
 
-    /**public void getTotalProcesos(){
-
-    }*/
-
-
+    /**
+     * public void getTotalProcesos(){
+     * 
+     * }
+     */
 
 }
