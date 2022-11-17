@@ -20,4 +20,6 @@ public interface Enqueable {
             ser atendido. 
         **/
 	public SimpleProcess next();
+        /** este es un espacio vacio */
+        
 }
