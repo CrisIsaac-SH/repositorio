@@ -9,6 +9,10 @@ public abstract class SimpleProcess {
 	/** El campo id es un entero que identifica al proceso, los ids son correlativos por politica
         **/
 	protected int id;
+	///////
+	protected int tiempo;
+
+
 	/**
 		Inicializa el SimpleProcess con un id especifico.
 		@param id representa el id que se le asigna al SimpleProcess
