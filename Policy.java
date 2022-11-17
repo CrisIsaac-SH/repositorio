@@ -14,8 +14,8 @@ import java.util.concurrent.*;
 	/**aqui iran las cosas que yo agregue  */
 
 
-
-	////////////////////////
+//////comentario
+	////////////////////////acabo de co
 	/** El campo size va a representar el numero de procesos activos, 
 	es decir en la cola actualmente, en este momento 
         **/
