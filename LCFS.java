@@ -1,10 +1,12 @@
 import java.io.Console;
 import java.util.Stack;
-import java.util.Queue;
+
 
 public class LCFS extends Policy{
 
     private Stack<SimpleProcess> mainStack;
+
+    private Stack<SimpleProcess> auxiliar;
 
     public LCFS(){
         mainStack = new Stack<SimpleProcess>();
@@ -16,11 +18,24 @@ public class LCFS extends Policy{
         mainStack.push(p);
     }
 
-    
-    public void remove(){
+    @Override
+    public void remove(SimpleProcess p){
 
-        mainStack.pop();
-    }
+        while(!mainStack.isEmpty()){
+            auxiliar.push(p);
+        }
+        if(mainStack.isEmpty()){
+            auxiliar.pop(p);
+            mainStack.push(p);
+        }
+        else{
+        mainStack.pop(p);
+            
+        }
+
+
+        }
+
 
     @Override
     public SimpleProcess next(){
@@ -48,8 +63,6 @@ public class LCFS extends Policy{
     public boolean isEmpty(){
        return mainStack.isEmpty();
     }
-
-
     
 
 }
