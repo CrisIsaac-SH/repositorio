@@ -16,8 +16,8 @@ public abstract class SimpleProcess {
 
 	public boolean isFree;
 	
-	public static int  AritmethicTime;
-	public static int  ConditionalTime;
+	public static int AritmethicTime;
+	public static int ConditionalTime;
 	public static int IOTime;
 	public static int IterativoTime;
 

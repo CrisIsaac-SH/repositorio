@@ -5,6 +5,8 @@ public class FCFS extends Policy {
 
     private ConcurrentLinkedQueue<SimpleProcess> mainQue;
 
+    
+
     public FCFS() {
         mainQue = new ConcurrentLinkedQueue<SimpleProcess>();
 
