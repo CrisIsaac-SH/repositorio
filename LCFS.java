@@ -16,10 +16,10 @@ public class LCFS extends Policy{
         mainStack.push(p);
     }
 
-    
-    public void remove(){
+    @Override    
+    public void remove(SimpleProcess p){
 
-        mainStack.pop();
+        //mainStack.pop();
     }
 
     @Override
