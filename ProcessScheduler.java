@@ -1,24 +1,25 @@
 import java.io.*;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.*;
 
 public class ProcessScheduler{
     public static void main(String[] args) throws Exception{
 
-        if(args[0].equals("-fcfs")){
-            System.out.println(args[1].substring(0,3));
-            System.out.println(args[1].substring(4,5));
-            System.out.println(args[2]);
-            System.out.println(args[3]);
-            System.out.println(args[4]);
-            System.out.println(args[5]);
-        }
-        else if(args[0].equals("-lcfs")){
+        SimpleProcess.AritmethicTime = 1;
+        SimpleProcess.IOTime = 2;
+        SimpleProcess.ConditionalTime = 3;
+        SimpleProcess.IterativoTime = 4;
 
-        }
-        else if(args[0].equals("-rr")){
 
-        }
-        else if(args[0].equals("-pp")){
+        FCFS politica1;
+        
 
-        }
+        
+
+
+        System.out.println("tenemos que ejecutar\n");
+        
     }
 }

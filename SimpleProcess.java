@@ -14,7 +14,7 @@ public abstract class SimpleProcess {
 
 	protected String nombre;
 
-	public   boolean isFree;
+	public boolean isFree;
 	
 	public static int  AritmethicTime;
 	public static int  ConditionalTime;
@@ -51,7 +51,7 @@ public abstract class SimpleProcess {
 	 * Proceso que devolvera si esta atendido un metodo
 	 */
 
-	 public boolean  isFinished(){
+	 public boolean isFinished(){
 		if (time>0) {
 			return false;
 		}
