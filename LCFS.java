@@ -6,7 +6,7 @@ public class LCFS extends Policy{
 
     private Stack<SimpleProcess> mainStack;
 
-    private Stack<SimpleProcess> auxiliar;
+    
 
     public LCFS(){
         mainStack = new Stack<SimpleProcess>();
@@ -20,21 +20,20 @@ public class LCFS extends Policy{
 
     @Override
     public void remove(SimpleProcess p){
+        Stack<SimpleProcess> auxiliar= new Stack<SimpleProcess>();
+        
+        while(mainStack.peek() != p){ //mientras el elemento  p que deseamos remover no este hasta arriba de la pila
+            auxiliar.push(mainStack.pop());
+        }
+        mainStack.pop(); //Ahora que ya sabemos que el elemento p se encuentra arriba lo removemos
 
-        while(!mainStack.isEmpty()){
-            auxiliar.push(p);
-        }
-        if(mainStack.isEmpty()){
-            auxiliar.pop(p);
-            mainStack.push(p);
-        }
-        else{
-        mainStack.pop(p);
-            
+        while(!auxiliar.isEmpty()){
+            mainStack.push(auxiliar.pop());
         }
 
 
-        }
+
+    }
 
 
     @Override
