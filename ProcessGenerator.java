@@ -6,6 +6,7 @@ public class ProcessGenerator implements Runnable{
     private static int ids;
     private Policy policy;
     private static int contad = 0;
+    public static boolean generating=true;
 
     public ProcessGenerator(Policy policy){
         this.policy = policy;
@@ -14,8 +15,8 @@ public class ProcessGenerator implements Runnable{
     }
 
     public void run(){
-        
-        while(true){
+        int contador=0;
+        while(contador<15){
             contad++;
             SimpleProcess newRandomProcess=null;
 
@@ -47,7 +48,9 @@ public class ProcessGenerator implements Runnable{
      // this part is executed when an exception (in this example InterruptedException) occurs 
                 System.out.println("No se pudo crear los procesos");
             }
+            contador++;
         }
+        ProcessGenerator.generating=false;
 
     }
     
