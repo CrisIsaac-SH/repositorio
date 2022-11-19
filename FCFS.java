@@ -33,6 +33,7 @@ public class FCFS extends Policy {
     public void serveNext() {
         SimpleProcess nextProcess = this.mainQue.remove();
         if (nextProcess.isFree) {
+            nextProcess.isFree=false;
             try {
                 Thread.sleep(nextProcess.time * 1000);
                 System.out.println("Atendiendo al proceso Id:" + nextProcess.id + " Tipo " +nextProcess.nombre);
