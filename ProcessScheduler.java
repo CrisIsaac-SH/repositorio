@@ -43,17 +43,15 @@ public class ProcessScheduler{
         politica1.add(iterativos4);
         
         Thread t = new Thread(servidor1);
-        t.start();
-        
-        
-
         Thread t2 = new Thread(servidor2);
+        t.start();             
         t2.start();
+         //Thread.sleep(1);
 
         //servidor1.run();
         //servidor2.run();
 
-        System.out.println("tenemos que ejecutar\n");
+       
         
     }
 }

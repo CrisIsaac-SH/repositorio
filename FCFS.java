@@ -30,7 +30,7 @@ public class FCFS extends Policy {
     }
 
     @Override
-    public void serveNext() {
+    public SimpleProcess serveNext() {
         SimpleProcess nextProcess = this.mainQue.remove();
         if (nextProcess.isFree) {
             nextProcess.isFree=false;
@@ -39,6 +39,8 @@ public class FCFS extends Policy {
                 Thread.sleep(nextProcess.time * 1000);                
                 System.out.println("Finalizo proceso Id:" + nextProcess.id + ". Tiempo que tomo---> "+  nextProcess.time);
                 nextProcess.time = 0;
+
+                return nextProcess;
                 
 
 
@@ -49,9 +51,10 @@ public class FCFS extends Policy {
             } catch (InterruptedException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
+                return null;
             }
         }
-
+        return null;
     }
 
     @Override

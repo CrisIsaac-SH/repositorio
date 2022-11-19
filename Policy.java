@@ -47,7 +47,7 @@ import java.util.concurrent.*;
 		return totalProcesses;
 	}
 //////////////////////////////////////////
-	public abstract void serveNext(); 
+	public abstract SimpleProcess serveNext(); 
 
 	public abstract  boolean isEmpty();
 	

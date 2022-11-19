@@ -15,10 +15,9 @@ public class Server implements Runnable {
     public void run(){
         SimpleProcess actualProcess;
         while (policy.isEmpty()==false){
-            actualProcess=  policy.next();
-            policy.serveNext();
-            int total = cont++;
+            actualProcess= policy.serveNext();           
             if(actualProcess.isFinished()){
+                int total = cont++;
                 //policy.remove(actualProcess);    
                 System.out.println("Finalizo el proceso Id:" + actualProcess.id + " de servidor "+ this.id);
                 System.out.println("\nTotal procesos: " + total + "\n"); 
