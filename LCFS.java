@@ -46,6 +46,7 @@ public class LCFS extends Policy{
     public void serveNext(){
         SimpleProcess nextProcess = this.next();
         if(nextProcess.isFree){
+            nextProcess.isFree=false;
             try{
                 Thread.sleep(nextProcess.time * 1000);
                 System.out.println("Atendiendo al proceso Id:" + nextProcess.id + " Tipo " +nextProcess.nombre);
@@ -57,6 +58,7 @@ public class LCFS extends Policy{
                 e.printStackTrace();
             }
         }
+        
     }
     @Override
     public boolean isEmpty(){

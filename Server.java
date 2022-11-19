@@ -19,6 +19,7 @@ public class Server implements Runnable {
             policy.serveNext();
             int total = cont++;
             if(actualProcess.isFinished()){
+                actualProcess.isFree=false;
                 policy.remove(actualProcess);    
                 System.out.println(" finalizo el proceso de servidor "+ this.id);
                 System.out.println("\nTotal procesos: " + total + "\n"); 
