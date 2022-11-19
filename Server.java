@@ -4,7 +4,7 @@ public class Server implements Runnable {
     private Policy policy;
     private boolean active; // Esto se va a desactivar al presionar  Q o enter
     private int id;
-    public static int numeroServer;
+    public static int numeroServer = 1;
     public Server(Policy policy){
         this.policy= policy;
         this.active = true; 
