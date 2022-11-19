@@ -35,7 +35,6 @@ public class LCFS extends Policy{
 
     }
 
-
     @Override
     public SimpleProcess next(){
 
@@ -44,7 +43,7 @@ public class LCFS extends Policy{
 
     @Override
     public void serveNext(){
-        SimpleProcess nextProcess = this.next();
+        SimpleProcess nextProcess = this.mainStack.pop();
         if(nextProcess.isFree){
             try{
                 Thread.sleep(nextProcess.time * 1000);

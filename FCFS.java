@@ -25,13 +25,13 @@ public class FCFS extends Policy {
     }
 
     @Override
-    public SimpleProcess next() {
+    public SimpleProcess next(){
         return mainQue.peek();
     }
 
     @Override
     public void serveNext() {
-        SimpleProcess nextProcess = this.next();
+        SimpleProcess nextProcess = this.mainQue.remove();
         if (nextProcess.isFree) {
             try {
                 Thread.sleep(nextProcess.time * 1000);
