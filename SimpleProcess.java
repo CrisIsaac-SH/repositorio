@@ -10,23 +10,23 @@ public abstract class SimpleProcess {
         **/
 	protected int id;
 	///////
-	protected int time;
+	protected double time;
 
 	protected String nombre;
 
 	public boolean isFree;
 	
-	public static int AritmethicTime;
-	public static int ConditionalTime;
-	public static int IOTime;
-	public static int IterativoTime;
+	public static double AritmethicTime;
+	public static double ConditionalTime;
+	public static double IOTime;
+	public static double IterativoTime;
 
 
 	/**
 		Inicializa el SimpleProcess con un id especifico.
 		@param id representa el id que se le asigna al SimpleProcess
 	**/	
-	public SimpleProcess(int id, int time){
+	public SimpleProcess(int id, double time){
 		this.id = id;
 		this.time= time;
 		this.isFree= true;

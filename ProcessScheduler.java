@@ -9,12 +9,16 @@ public class ProcessScheduler{
     public static void main(String[] args) throws Exception{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        String parar = br.readLine();
+        //String parar = br.readLine();
+        double tiempoAr = Double.parseDouble(args[0]);
+        double tiempoIO = Double.parseDouble(args[1]);
+        double tiempoCon = Double.parseDouble(args[2]);
+        double tiempoIter = Double.parseDouble(args[3]);
 
-        SimpleProcess.AritmethicTime = 1;
-        SimpleProcess.IOTime = 2;
-        SimpleProcess.ConditionalTime = 3;
-        SimpleProcess.IterativoTime = 4;
+        SimpleProcess.AritmethicTime = tiempoAr;
+        SimpleProcess.IOTime = tiempoIO;
+        SimpleProcess.ConditionalTime = tiempoCon;
+        SimpleProcess.IterativoTime = tiempoIter;
 
         SimpleProcess aritmetico = new Aritmetico(1);
         SimpleProcess inputOutput = new InputOutput(2);
@@ -48,17 +52,25 @@ public class ProcessScheduler{
         //politica1.add(iterativos4);
 
         Thread processT = new Thread(generados);
-        processT.start();
 
 
         Thread t = new Thread(servidor1);
         Thread t2 = new Thread(servidor2);
         t.start();             
+        
         t2.start();
+        processT.start();
+
         Thread.sleep(10);
+        
+
+        
 
         servidor1.run();
         servidor2.run();
+
+
+        
        
         
     }
