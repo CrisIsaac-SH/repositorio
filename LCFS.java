@@ -47,9 +47,9 @@ public class LCFS extends Policy{
         if(nextProcess.isFree){
             nextProcess.isFree=false;
             try{
-                Thread.sleep(nextProcess.time * 1000);
-                System.out.println("Atendiendo al proceso Id:" + nextProcess.id + " Tipo " +nextProcess.nombre);
-                System.out.println("Tiempo que tomo " +  nextProcess.time);
+                System.out.println("Inicio proceso Id:" + nextProcess.id + " Tipo " +nextProcess.nombre);
+                Thread.sleep(nextProcess.time * 1000);                
+                System.out.println("Finalizo proceso Id:" + nextProcess.id + ". Tiempo que tomo---> "+  nextProcess.time);
                 nextProcess.time = 0;
             }
             catch (InterruptedException e) {
