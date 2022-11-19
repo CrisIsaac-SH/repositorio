@@ -7,18 +7,11 @@ import java.util.concurrent.*;
 
 public class ProcessScheduler{
     public static void main(String[] args) throws Exception{
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        //String parar = br.readLine();
-        double tiempoAr = Double.parseDouble(args[0]);
-        double tiempoIO = Double.parseDouble(args[1]);
-        double tiempoCon = Double.parseDouble(args[2]);
-        double tiempoIter = Double.parseDouble(args[3]);
-
-        SimpleProcess.AritmethicTime = tiempoAr;
-        SimpleProcess.IOTime = tiempoIO;
-        SimpleProcess.ConditionalTime = tiempoCon;
-        SimpleProcess.IterativoTime = tiempoIter;
+        SimpleProcess.AritmethicTime = 1;
+        SimpleProcess.IOTime = 2;
+        SimpleProcess.ConditionalTime = 3;
+        SimpleProcess.IterativoTime = 4;
 
         SimpleProcess aritmetico = new Aritmetico(1);
         SimpleProcess inputOutput = new InputOutput(2);
@@ -31,46 +24,33 @@ public class ProcessScheduler{
         SimpleProcess iterativos4 = new Iterativos(8);
 
         ///////////////
-        
 
 
         Policy politica1= new FCFS();
-        ProcessGenerator generados = new ProcessGenerator(politica1);
         //Server servidor = new Server(politica1);
         Server servidor1 = new Server(politica1);
-        //politica1.add(aritmetico);
-        //politica1.add(inputOutput);
-        //politica1.add(condiciones);
-        //politica1.add(iterativos);
+        politica1.add(aritmetico);
+        politica1.add(inputOutput);
+        politica1.add(condiciones);
+        politica1.add(iterativos);
 
         
 
         Server servidor2 = new Server(politica1);
-        //politica1.add(aritmetico1);
-        //politica1.add(inputOutput2);
-        //politica1.add(condiciones3);
-        //politica1.add(iterativos4);
-
-        Thread processT = new Thread(generados);
-
-
+        politica1.add(aritmetico1);
+        politica1.add(inputOutput2);
+        politica1.add(condiciones3);
+        politica1.add(iterativos4);
+        
         Thread t = new Thread(servidor1);
         Thread t2 = new Thread(servidor2);
         t.start();             
-        
         t2.start();
-        processT.start();
+         //Thread.sleep(1);
 
-        Thread.sleep(10);
-        
+        //servidor1.run();
+        //servidor2.run();
 
-        
-
-        servidor1.run();
-        servidor2.run();
-
-
-        
        
         
     }
