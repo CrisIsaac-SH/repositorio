@@ -49,6 +49,6 @@ import java.util.concurrent.*;
 //////////////////////////////////////////
 	public abstract SimpleProcess serveNext(); 
 
-	public abstract  boolean isEmpty();
+	public abstract boolean isEmpty();
 	
 }
