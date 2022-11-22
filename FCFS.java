@@ -58,7 +58,9 @@ public class FCFS extends Policy {
                 return null;
             }
         }
-        return null;
+        return nextProcess;
+
+        //return null;
     }
 
     @Override
