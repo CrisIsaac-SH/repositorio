@@ -26,7 +26,9 @@ public class ProcessScheduler{
         ///////////////
         
 
-        Policy politica1= new FCFS();
+        Policy politica1= new LCFS();
+        //Policy politica1 = new FCFS();
+        
         //Server servidor = new Server(politica1);
         ProcessGenerator generador= new ProcessGenerator(politica1);
         Server servidor1 = new Server(politica1);
@@ -47,7 +49,7 @@ public class ProcessScheduler{
         Thread t2 = new Thread(servidor2);
         Thread t3 = new Thread(generador);
         t3.start();
-        Thread.sleep(100);
+        Thread.sleep(1);
         t.start();             
         t2.start();
          //Thread.sleep(1);

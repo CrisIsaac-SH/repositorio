@@ -16,7 +16,7 @@ public class ProcessGenerator implements Runnable{
 
     public void run(){
         int contador=0;
-        while(contador<15){
+        while(generating){
             contad++;
             SimpleProcess newRandomProcess=null;
 

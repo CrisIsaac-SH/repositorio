@@ -2,6 +2,7 @@ import java.io.Console;
 import java.util.Stack;
 
 
+
 public class LCFS extends Policy{
 
     private Stack<SimpleProcess> mainStack;
@@ -10,6 +11,7 @@ public class LCFS extends Policy{
 
     public LCFS(){
         mainStack = new Stack<SimpleProcess>();
+        System.out.println("Política LCFS(Last Come First Served)\n");
     }
 
     @Override
@@ -31,8 +33,6 @@ public class LCFS extends Policy{
             mainStack.push(auxiliar.pop());
         }
 
-
-
     }
 
     @Override
@@ -47,11 +47,11 @@ public class LCFS extends Policy{
         if(nextProcess.isFree){
             nextProcess.isFree=false;
             try{
-                System.out.println("Inicio proceso Id:" + nextProcess.id + " Tipo " +nextProcess.nombre);
-                Thread.sleep((int)(nextProcess.time * 1000.0)); 
-                System.out.println("Finalizo proceso Id:" + nextProcess.id + ". Tiempo que tomo---> "+  nextProcess.time);
+                System.out.println("Ingreso el proceso a la política LCFS con el Id:" + nextProcess.id + " Tipo: " + nextProcess.nombre);
+                Thread.sleep((int)(nextProcess.time * 1000.0));                
+                System.out.println("Termino de atenderse el proceso con Id:" + nextProcess.id +" Tipo: "+ nextProcess.nombre);
+                System.out.println("Tiempo que tomo en atenderse el proceso fue de: " +  nextProcess.time);
                 nextProcess.time = 0;
-                return nextProcess;
             }
             catch (InterruptedException e) {
                 // TODO Auto-generated catch block
@@ -59,9 +59,10 @@ public class LCFS extends Policy{
                 return null;
             }
         }
-        return null;
+        return nextProcess;
         
     }
+
     @Override
     public boolean isEmpty(){
        return mainStack.isEmpty();
