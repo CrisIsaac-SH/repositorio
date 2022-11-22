@@ -3,7 +3,7 @@ import java.util.*;
 
 public class ProcessGenerator implements Runnable{
 
-    private static int ids;
+ 
     private Policy policy;
     private static int contad = 0;
     public static boolean generating=true;
@@ -15,8 +15,8 @@ public class ProcessGenerator implements Runnable{
     }
 
     public void run(){
-        int contador=0;
-        while(generating){
+        
+        while(generating && contad<15){
             contad++;
             SimpleProcess newRandomProcess=null;
 
@@ -41,16 +41,17 @@ public class ProcessGenerator implements Runnable{
             this.policy.add(newRandomProcess);
             
             try{
-                Thread.sleep(1000);
+                Thread.sleep(1000); /// TODO este tiempo debe ser RANDOM
                 
             } 
             catch(InterruptedException e){
      // this part is executed when an exception (in this example InterruptedException) occurs 
-                System.out.println("No se pudo crear los procesos");
+                System.out.println("No se pudo crear proceso");
             }
-            contador++;
+            
         }
         ProcessGenerator.generating=false;
+        policy.finishPolicy();
 
     }
     

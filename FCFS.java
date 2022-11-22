@@ -2,26 +2,25 @@ import java.io.Console;
 import java.util.EmptyStackException;
 import java.util.concurrent.*;
 
-import java.util.Iterator;
-import java.util.Set;
-import java.util.concurrent.ConcurrentLinkedDeque;
-
 public class FCFS extends Policy {
 
     private ConcurrentLinkedQueue<SimpleProcess> mainQue;
 
-    
-
     public FCFS() {
+
         mainQue = new ConcurrentLinkedQueue<SimpleProcess>();
-        System.out.println("Política FCFS(First Come First Served)\n");
 
     }
 
     @Override
-    public void add(SimpleProcess p) {
+    public synchronized void add(SimpleProcess p) {
 
         mainQue.add(p);
+        if (waitingForProcess > 0) {
+
+            waitingForProcess--;
+            notify();
+        }
     }
 
     @Override
@@ -31,7 +30,7 @@ public class FCFS extends Policy {
     }
 
     @Override
-    public SimpleProcess next(){
+    public synchronized SimpleProcess next() {
         return mainQue.peek();
     }
 
@@ -40,12 +39,11 @@ public class FCFS extends Policy {
     //}
 
     @Override
-    public SimpleProcess serveNext(){
+    public SimpleProcess serveNext() {
         SimpleProcess nextProcess = this.mainQue.remove();
         
         if (nextProcess.isFree) {
             nextProcess.isFree=false;
-
             try {
                 
                 System.out.println("Ingreso el proceso a la política FCFS con el Id:" + nextProcess.id + " Tipo: " + nextProcess.nombre);
@@ -55,22 +53,29 @@ public class FCFS extends Policy {
                 nextProcess.time = 0;
 
                 return nextProcess;
+                
+
+
+
                 // Thread.sleep( RounRobinTime.time*1000) esto seria para round robin
                 // nextProcess.time= nextProcess.time- RoundRobinTime.time
 
             } catch (InterruptedException e) {
+                // TODO Auto-generated catch block
                 e.printStackTrace();
                 throw new NoSuchElementException();
                 return null;
             }
         }
+
         return nextProcess;
-        
+
+        //return null;
     }
 
     @Override
     public boolean isEmpty() {
-       return mainQue.isEmpty();
+       return  mainQue.isEmpty();
     }
 
     // no creo que sea necesario sacar de la cola creo

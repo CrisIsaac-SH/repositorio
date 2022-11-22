@@ -13,15 +13,15 @@ public class ProcessScheduler{
         SimpleProcess.ConditionalTime = 3;
         SimpleProcess.IterativoTime = 4;
 
-        SimpleProcess aritmetico = new Aritmetico(1);
-        SimpleProcess inputOutput = new InputOutput(2);
-        SimpleProcess condiciones = new Condicionales(3);
-        SimpleProcess iterativos = new Iterativos(4);
-        ///////////////
-        SimpleProcess aritmetico1 = new Aritmetico(5);
-        SimpleProcess inputOutput2 = new InputOutput(6);
-        SimpleProcess condiciones3 = new Condicionales(7);
-        SimpleProcess iterativos4 = new Iterativos(8);
+        // SimpleProcess aritmetico = new Aritmetico(1);
+        // SimpleProcess inputOutput = new InputOutput(2);
+        // SimpleProcess condiciones = new Condicionales(3);
+        // SimpleProcess iterativos = new Iterativos(4);
+        // ///////////////
+        // SimpleProcess aritmetico1 = new Aritmetico(5);
+        // SimpleProcess inputOutput2 = new InputOutput(6);
+        // SimpleProcess condiciones3 = new Condicionales(7);
+        // SimpleProcess iterativos4 = new Iterativos(8);
 
         ///////////////
         
@@ -44,12 +44,12 @@ public class ProcessScheduler{
         // politica1.add(inputOutput2);
         // politica1.add(condiciones3);
         // politica1.add(iterativos4);
-        
+        Thread t3 = new Thread(generador);
         Thread t = new Thread(servidor1);
         Thread t2 = new Thread(servidor2);
-        Thread t3 = new Thread(generador);
+      
         t3.start();
-        Thread.sleep(1);
+        Thread.sleep(100);
         t.start();             
         t2.start();
         //Thread.sleep(10);
