@@ -8,9 +8,9 @@ public class FCFS extends Policy {
     private ConcurrentLinkedQueue<SimpleProcess> mainQue;
 
     public FCFS() {
-        
+
         mainQue = new ConcurrentLinkedQueue<SimpleProcess>();
-        
+
     }
 
     @Override
@@ -62,12 +62,14 @@ public class FCFS extends Policy {
                 System.out.println("Se inicio el proceso en la política FCFS con el Id:" + nextProcess.id + " Tipo: "
                         + nextProcess.nombre);
                 Thread.sleep((int) (nextProcess.time * 1000.0));
-                System.out.println(
-                        "Termino de atenderse el proceso con Id:" + nextProcess.id + " Tipo: " + nextProcess.nombre);
-                System.out.println("Tiempo que tomo en atenderse el proceso fue de: " + nextProcess.time);
-                nextProcess.time = 0;
-
-                return nextProcess;
+                synchronized (this) {
+                    System.out.println(
+                            "Termino de atenderse el proceso con Id:" + nextProcess.id + " Tipo: "
+                                    + nextProcess.nombre);
+                    System.out.println("Tiempo que tomo en atenderse el proceso fue de: " + nextProcess.time);
+                    nextProcess.time = 0;
+                }
+                
 
             } catch (InterruptedException e) {
 
