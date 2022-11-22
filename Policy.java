@@ -23,12 +23,15 @@ import java.util.concurrent.*;
 	/** El campo total va a representar el total de procesos que han sido ingresados a
         la cola **/
 	protected int totalProcesses;
+
+	protected int waitingForProcess;
 	/**
 		Inicializa el Policy con size = 0 y totalProcesses = 0.
 	**/		
 	public Policy() {
 		this.size = 0;
 		this.totalProcesses = 0;
+		this.waitingForProcess=0;
 	}
         /**
 		Devuelve la cantidad de procesos activos en la cola de la politica
@@ -48,6 +51,8 @@ import java.util.concurrent.*;
 	}
 //////////////////////////////////////////
 	public abstract SimpleProcess serveNext(); 
+
+	public abstract void finishPolicy();
 
 	public abstract  boolean isEmpty();
 	

@@ -15,9 +15,13 @@ public class LCFS extends Policy{
     }
 
     @Override
-    public void add(SimpleProcess p){
-
+    public synchronized void add(SimpleProcess p){        
         mainStack.push(p);
+        if(waitingForProcess>0){
+           
+            waitingForProcess--;
+            notify();
+        }        
     }
 
     @Override
@@ -43,11 +47,28 @@ public class LCFS extends Policy{
 
     @Override
     public SimpleProcess serveNext(){
-        SimpleProcess nextProcess = this.mainStack.pop();
+        if (mainStack.isEmpty()) {
+            try {
+                waitingForProcess++;
+                wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        SimpleProcess nextProcess;
+        synchronized(this){
+            if(!this.mainStack.isEmpty()){
+                nextProcess= this.mainStack.pop();
+            }else{
+                return null;
+            }
+
+        }
+       
         if(nextProcess.isFree){
             nextProcess.isFree=false;
             try{
-                System.out.println("Ingreso el proceso a la política LCFS con el Id:" + nextProcess.id + " Tipo: " + nextProcess.nombre);
+                System.out.println("Inicio el proceso en la política LCFS con el Id:" + nextProcess.id + " Tipo: " + nextProcess.nombre);
                 Thread.sleep((int)(nextProcess.time * 1000.0));                
                 System.out.println("Termino de atenderse el proceso con Id:" + nextProcess.id +" Tipo: "+ nextProcess.nombre);
                 System.out.println("Tiempo que tomo en atenderse el proceso fue de: " +  nextProcess.time);
@@ -66,6 +87,12 @@ public class LCFS extends Policy{
     @Override
     public boolean isEmpty(){
        return mainStack.isEmpty();
+    }
+
+    @Override
+    public void finishPolicy() {
+        notifyAll();
+        
     }
     
 
