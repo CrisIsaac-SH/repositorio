@@ -52,6 +52,8 @@ import java.util.concurrent.*;
 //////////////////////////////////////////
 	public abstract SimpleProcess serveNext(); 
 
+	public abstract void finishPolicy();
+
 	public abstract  boolean isEmpty();
 	
 }

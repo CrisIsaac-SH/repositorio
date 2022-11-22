@@ -49,10 +49,9 @@ public class ProcessScheduler{
         Thread t2 = new Thread(servidor2);
       
         t3.start();
-        Thread.sleep(100);
         t.start();             
         t2.start();
-        //Thread.sleep(10);
+         //Thread.sleep(1);
 
         //servidor1.run();
         //servidor2.run();
