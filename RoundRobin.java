@@ -40,7 +40,7 @@ public class RoundRobin extends Policy {
         if (roundQue.isEmpty()) {
             try {
                 synchronized (this) {
-                    waitingForProcess++;
+                    waitingForProcess--;
                     wait();
                 }
             } catch (InterruptedException e) {
@@ -63,23 +63,17 @@ public class RoundRobin extends Policy {
             try {
                 System.out.println("Se inicio el proceso en la política RR con el Id:" + nextProcess.id + " Tipo: "
                         + nextProcess.nombre);
-                if( nextProcess.time> this.quatum)
                 Thread.sleep((int) (this.quatum * 1000.0));
-                else 
-                    Thread.sleep((int)(nextProcess.time *1000) );
                 synchronized (this) {
                     nextProcess.time = nextProcess.time - this.quatum;
                     if (nextProcess.isFinished()) {
 
                         System.out.println("Termino de atenderse el proceso con Id:" + nextProcess.id + " Tipo: "
-                                + nextProcess.nombre +
-                                "\nTiempo que tomo en atenderse el proceso fue de: " + nextProcess.original);
+                                + nextProcess.nombre);
+                        System.out.println("Tiempo que tomo en atenderse el proceso fue de: " + nextProcess.time);
 
                     } else {
-                        System.out.println("Se atendio parcialmente el proceso con Id:" + nextProcess.id
-                        + "\nTiempo restante: " + nextProcess.time);
                         this.roundQue.add(nextProcess);
-                        nextProcess.isFree=true;
                     }
                 }
             } catch (InterruptedException e) {
