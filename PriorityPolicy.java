@@ -32,8 +32,9 @@ public class PriorityPolicy extends Policy {
             priority3.add(p);
         } else if (p instanceof Iterativos) {
             priority4.add(p);
-        } else if (waitingForProcess > 0) {
-
+        } 
+        
+        if (waitingForProcess > 0) {
             waitingForProcess--;
             notify();
         }
@@ -54,13 +55,13 @@ public class PriorityPolicy extends Policy {
 
     @Override
     public synchronized SimpleProcess next() {
-        if (this.priority1.isEmpty()) {
+        if (!this.priority1.isEmpty()) {
             return priority1.peek();
-        } else if (this.priority2.isEmpty()) {
+        } else if (!this.priority2.isEmpty()) {
             return priority2.peek();
-        } else if (this.priority3.isEmpty()) {
+        } else if (!this.priority3.isEmpty()) {
             return priority3.peek();
-        } else if (this.priority4.isEmpty()) {
+        } else if (!this.priority4.isEmpty()) {
             return priority4.peek();
         } else {
             return null;
@@ -113,12 +114,9 @@ public class PriorityPolicy extends Policy {
                                     + nextProcess.nombre);
                     System.out.println("Tiempo que tomo en atenderse el proceso fue de: " + nextProcess.time);
                     nextProcess.time = 0;
-
-                    nextProcess.time = 0;
                 }
 
-            } catch (InterruptedException e) {
-                // TODO: handle exception
+            } catch (InterruptedException e) {                
                 e.printStackTrace();
                 return null;
             }

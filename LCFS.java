@@ -74,7 +74,6 @@ public class LCFS extends Policy {
                     nextProcess.time = 0;
                 }
             } catch (InterruptedException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
                 return null;
             }
