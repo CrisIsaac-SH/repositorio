@@ -27,7 +27,7 @@ public class ProcessScheduler{
         
 
         //Policy politica1= new LCFS();
-        Policy politica1 = new FCFS();
+        Policy politica1 = new PriorityPolicy();
         
         //Server servidor = new Server(politica1);
         ProcessGenerator generador= new ProcessGenerator(politica1);
