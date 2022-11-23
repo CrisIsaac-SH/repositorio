@@ -1,58 +1,55 @@
 import java.util.*;
 
+public class ProcessGenerator implements Runnable {
 
-public class ProcessGenerator implements Runnable{
-
- 
     private Policy policy;
     private static int contad = 0;
-    public static boolean generating=true;
+    public static boolean generating = true;
 
-    public ProcessGenerator(Policy policy){
+    public ProcessGenerator(Policy policy) {
         this.policy = policy;
-        
 
     }
 
-    public void run(){
-        
-        while(generating && contad<15){
-            contad++;
-            SimpleProcess newRandomProcess=null;
+    public void run() {
 
-            int numero = (int)(Math.random()*(4-1+1)+1);
-            switch(numero){
+        while (generating) {
+            contad++;
+            SimpleProcess newRandomProcess = null;
+
+            int numero = (int) (Math.random() * (4 - 1 + 1) + 1);
+            switch (numero) {
                 case 1:
                     newRandomProcess = new Aritmetico(contad);
-                break;
-    
+                    break;
+
                 case 2:
                     newRandomProcess = new InputOutput(contad);
-                break;
-    
+                    break;
+
                 case 3:
-                    newRandomProcess = new Condicionales(contad); 
-                break;
-    
+                    newRandomProcess = new Condicionales(contad);
+                    break;
+
                 case 4:
                     newRandomProcess = new Iterativos(contad);
-                break;
+                    break;
             }
             this.policy.add(newRandomProcess);
-            
-            try{
+
+            try {
                 Thread.sleep(1000); /// TODO este tiempo debe ser RANDOM
-                
-            } 
-            catch(InterruptedException e){
-     // this part is executed when an exception (in this example InterruptedException) occurs 
+
+            } catch (InterruptedException e) {
+                // this part is executed when an exception (in this example
+                // InterruptedException) occurs
                 System.out.println("No se pudo crear proceso");
             }
-            
+
         }
-        ProcessGenerator.generating=false;
+        ProcessGenerator.generating = false;
         policy.finishPolicy();
 
     }
-    
+
 }

@@ -6,9 +6,9 @@ import javax.swing.plaf.synth.SynthCheckBoxMenuItemUI;
 public class RoundRobin extends Policy {
 
     private ConcurrentLinkedQueue<SimpleProcess> roundQue;
-    private int quatum;
+    private double quatum;
 
-    public RoundRobin(int quatum) {
+    public RoundRobin(Double quatum) {
         roundQue = new ConcurrentLinkedQueue<SimpleProcess>();
         this.quatum = quatum;
     }
@@ -63,10 +63,10 @@ public class RoundRobin extends Policy {
             try {
                 System.out.println("Se inicio el proceso en la política RR con el Id:" + nextProcess.id + " Tipo: "
                         + nextProcess.nombre);
-                if( nextProcess.time> this.quatum)
-                Thread.sleep((int) (this.quatum * 1000.0));
-                else 
-                    Thread.sleep((int)(nextProcess.time *1000) );
+                if (nextProcess.time > this.quatum)
+                    Thread.sleep((int) (this.quatum * 1000.0));
+                else
+                    Thread.sleep((int) (nextProcess.time * 1000));
                 synchronized (this) {
                     nextProcess.time = nextProcess.time - this.quatum;
                     if (nextProcess.isFinished()) {
@@ -77,9 +77,9 @@ public class RoundRobin extends Policy {
 
                     } else {
                         System.out.println("Se atendio parcialmente el proceso con Id:" + nextProcess.id
-                        + "\nTiempo restante: " + nextProcess.time);
+                                + "\nTiempo restante: " + nextProcess.time);
                         this.roundQue.add(nextProcess);
-                        nextProcess.isFree=true;
+                        nextProcess.isFree = true;
                     }
                 }
             } catch (InterruptedException e) {

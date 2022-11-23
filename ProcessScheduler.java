@@ -25,7 +25,7 @@ public class ProcessScheduler {
         ///////////////
 
         // Policy politica1= new LCFS();
-        Policy politica1 = new RoundRobin(1);
+        Policy politica1 = new RoundRobin(1.0);
 
         // Server servidor = new Server(politica1);
         ProcessGenerator generador = new ProcessGenerator(politica1);
@@ -35,18 +35,18 @@ public class ProcessScheduler {
         // politica1.add(condiciones);
         // politica1.add(iterativos);
 
-        // Server servidor2 = new Server(politica1);
+        Server servidor2 = new Server(politica1);
         // politica1.add(aritmetico1);
         // politica1.add(inputOutput2);
         // politica1.add(condiciones3);
         // politica1.add(iterativos4);
         Thread t3 = new Thread(generador);
         Thread t = new Thread(servidor1);
-        // Thread t2 = new Thread(servidor2);
+        Thread t2 = new Thread(servidor2);
 
         t3.start();
         t.start();
-        // t2.start();
+        t2.start();
         // Thread.sleep(1);
 
         // servidor1.run();
