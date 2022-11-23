@@ -66,7 +66,7 @@ public class RoundRobin extends Policy {
                 Thread.sleep((int) (this.quatum * 1000.0));
                 synchronized (this) {
                     nextProcess.time = nextProcess.time - this.quatum;
-                    if (!nextProcess.isFinished()) {
+                    if (nextProcess.isFinished()) {
 
                         System.out.println("Termino de atenderse el proceso con Id:" + nextProcess.id + " Tipo: "
                                 + nextProcess.nombre);
@@ -74,6 +74,7 @@ public class RoundRobin extends Policy {
 
                     } else {
                         this.roundQue.add(nextProcess);
+                        nextProcess.isFree=true;
                     }
                 }
             } catch (InterruptedException e) {
