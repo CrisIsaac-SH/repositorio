@@ -20,7 +20,6 @@ public class ProcessScheduler2{
             tiempo2 = Double.parseDouble(args[1].substring(2,5));
         }
 
-        //double random = Math.random()* (tiempo2 + tiempo1);
         SimpleProcess.AritmethicTime = Double.parseDouble(args[2]);
         SimpleProcess.IOTime = Double.parseDouble(args[3]);
         SimpleProcess.ConditionalTime = Double.parseDouble(args[4]);
@@ -60,16 +59,25 @@ public class ProcessScheduler2{
             Thread t3 = new Thread(generador);
             t3.start();
             Thread.sleep(100);
-            t.start();             
+
+            double random = Math.random()* (tiempo2 + tiempo1);
+            long l = Math.round(random);
+            Thread.sleep(l);
+            t.start(); 
         }
 
         else if(args[0].equals("-rr")){
-
-
         }
         else if(args[0].equals("-pp")){
 
-
+            Policy politica1 = new PriorityPolicy();
+            ProcessGenerator generador = new ProcessGenerator(politica1);
+            Server servidor1 = new Server(politica1);   
+            Thread t = new Thread(servidor1);
+            Thread t3 = new Thread(generador);
+            t3.start();
+            Thread.sleep(100);
+            t.start();  
         }
 
 
@@ -85,10 +93,10 @@ public class ProcessScheduler2{
         
             if(args[1].equals("-fcfs")){
 
-                /*Policy politica1 = new FCFS();
+                Policy politica1 = new FCFS();
                 ProcessGenerator generador= new ProcessGenerator(politica1);
+                
                 Server servidor1 = new Server(politica1);
-            
                 Server servidor2 = new Server(politica1);
 
                 Thread t = new Thread(servidor1);
@@ -97,18 +105,41 @@ public class ProcessScheduler2{
                 t3.start();
                 Thread.sleep(100);
                 t.start();             
-                t2.start();*/
-                //Thread.sleep(1);
-
-                //servidor1.run();
-                //servidor2.run();
+                t2.start();
 
             }else if(args[1].equals("-lcfs")){
+
+                Policy politica1 = new LCFS();
+                ProcessGenerator generador= new ProcessGenerator(politica1);
+                
+                Server servidor1 = new Server(politica1);
+                Server servidor2 = new Server(politica1);
+
+                Thread t = new Thread(servidor1);
+                Thread t2 = new Thread(servidor2);
+                Thread t3 = new Thread(generador);
+                t3.start();
+                Thread.sleep(100);
+                t.start();             
+                t2.start();
 
             }else if(args[1].equals("-rr")){
 
             }else if(args[1].equals("-pp")){
                 
+                Policy politica1 = new PriorityPolicy();
+                ProcessGenerator generador= new ProcessGenerator(politica1);
+                
+                Server servidor1 = new Server(politica1);
+                Server servidor2 = new Server(politica1);
+
+                Thread t = new Thread(servidor1);
+                Thread t2 = new Thread(servidor2);
+                Thread t3 = new Thread(generador);
+                t3.start();
+                Thread.sleep(100);
+                t.start();             
+                t2.start();
             }
         }
        
