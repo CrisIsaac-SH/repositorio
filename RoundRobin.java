@@ -64,15 +64,17 @@ public class RoundRobin extends Policy {
                 System.out.println("Se inicio el proceso en la política RR con el Id:" + nextProcess.id + " Tipo: "
                         + nextProcess.nombre);
                 Thread.sleep((int) (this.quatum * 1000.0));
-                nextProcess.time = nextProcess.time - this.quatum;
-                if (!nextProcess.isFinished()) {
-                    synchronized (this) {
+                synchronized (this) {
+                    nextProcess.time = nextProcess.time - this.quatum;
+                    if (!nextProcess.isFinished()) {
+
                         System.out.println("Termino de atenderse el proceso con Id:" + nextProcess.id + " Tipo: "
                                 + nextProcess.nombre);
                         System.out.println("Tiempo que tomo en atenderse el proceso fue de: " + nextProcess.time);
+
+                    } else {
+                        this.roundQue.add(nextProcess);
                     }
-                } else {
-                    this.roundQue.add(nextProcess);
                 }
             } catch (InterruptedException e) {
                 // TODO: handle exception
