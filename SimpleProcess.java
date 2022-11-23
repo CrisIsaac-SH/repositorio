@@ -11,7 +11,7 @@ public abstract class SimpleProcess {
 	protected int id;
 	///////
 	protected double time;
-
+	protected double original;
 	protected String nombre;
 
 	public boolean isFree;
@@ -29,6 +29,7 @@ public abstract class SimpleProcess {
 	public SimpleProcess(int id, double time){
 		this.id = id;
 		this.time= time;
+		this.original= time;
 		this.isFree= true;
 		
 	}
