@@ -5,14 +5,18 @@ public class ProcessGenerator implements Runnable {
     private Policy policy;
     private static int contad = 0;
     public static boolean generating = true;
+    private double tiempoIni;
+    private double timepoFin;
 
-    public ProcessGenerator(Policy policy) {
+    public ProcessGenerator(Policy policy, double tiempoIni, double timepoFin) {
         this.policy = policy;
+        this.tiempoIni = tiempoIni;
+        this.timepoFin = timepoFin;
 
     }
 
     public void run() { // f - i + 1 + i
-        int tiempoGenerator = (int) (Math.random() * (5 - 1 + 1) + 1);
+        int tiempoGenerator = (int) (Math.random() * ((timepoFin - tiempoIni) + 1) + tiempoIni);
 
         while (generating) {
             contad++;
