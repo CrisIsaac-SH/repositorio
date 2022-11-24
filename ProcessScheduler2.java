@@ -45,10 +45,6 @@ public class ProcessScheduler2 {
             Thread t = new Thread(servidor1);
             Thread t3 = new Thread(generador);
             t3.start();
-
-            double random = Math.random() * (tiempo2 + tiempo1);
-            long l = Math.round(random);
-            Thread.sleep(l);
             t.start();
 
         }
@@ -61,11 +57,11 @@ public class ProcessScheduler2 {
             Thread t = new Thread(servidor1);
             Thread t3 = new Thread(generador);
             t3.start();
-            Thread.sleep(100);
+            // Thread.sleep(100);
 
-            double random = Math.random() * (tiempo2 + tiempo1);
-            long l = Math.round(random);
-            Thread.sleep(l);
+            // double random = Math.random() * (tiempo2 + tiempo1);
+            // long l = Math.round(random);
+            // Thread.sleep(l);
             t.start();
         }
 
@@ -77,11 +73,11 @@ public class ProcessScheduler2 {
             Thread t = new Thread(servidor1);
             Thread t3 = new Thread(generador);
             t3.start();
-            Thread.sleep(100);
+            // Thread.sleep(100);
 
-            double random = Math.random() * (tiempo2 + tiempo1);
-            long l = Math.round(random);
-            Thread.sleep(l);
+            // double random = Math.random() * (tiempo2 + tiempo1);
+            // long l = Math.round(random);
+            // Thread.sleep(l);
             t.start();
         }
 

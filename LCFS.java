@@ -45,8 +45,10 @@ public class LCFS extends Policy {
     public SimpleProcess serveNext() {
         if (mainStack.isEmpty()) {
             try {
-                waitingForProcess++;
-                wait();
+                synchronized (this) {
+                    waitingForProcess++;
+                    wait();
+                }
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
