@@ -11,7 +11,8 @@ public class ProcessGenerator implements Runnable {
 
     }
 
-    public void run() {
+    public void run() { // f - i + 1 + i
+        int tiempoGenerator = (int) (Math.random() * (5 - 1 + 1) + 1);
 
         while (generating) {
             contad++;
@@ -38,7 +39,8 @@ public class ProcessGenerator implements Runnable {
             this.policy.add(newRandomProcess);
 
             try {
-                Thread.sleep(1000); /// TODO este tiempo debe ser RANDOM
+
+                Thread.sleep(tiempoGenerator * 1000); /// TODO este tiempo debe ser RANDOM
 
             } catch (InterruptedException e) {
                 // this part is executed when an exception (in this example

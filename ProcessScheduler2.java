@@ -10,6 +10,8 @@ public class ProcessScheduler2 {
 
         double tiempo1 = 0;
         double tiempo2 = 0;
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String parar = br.readLine();
 
         if (args[1].substring(3, 4).equals("-")) {
             tiempo1 = Double.parseDouble(args[1].substring(0, 3));
@@ -48,6 +50,7 @@ public class ProcessScheduler2 {
             long l = Math.round(random);
             Thread.sleep(l);
             t.start();
+
         }
 
         else if (args[0].equals("-lcfs")) {
@@ -165,6 +168,10 @@ public class ProcessScheduler2 {
                 t.start();
                 t2.start();
             }
+        }
+        switch (parar) {
+            case "q":
+                break;
         }
 
     }
