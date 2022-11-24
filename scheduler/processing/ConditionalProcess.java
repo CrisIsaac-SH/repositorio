@@ -1,7 +1,8 @@
-public class Condicionales extends SimpleProcess{
+package scheduler.processing;
+public class ConditionalProcess extends SimpleProcess{
     
     
-    public Condicionales(int id){
+    public ConditionalProcess(int id){
         super(id,SimpleProcess.ConditionalTime);
         this.nombre = "Condicional";
         System.out.println("Se agrego nuevo proceso: Condicional.  Id:"+ id );

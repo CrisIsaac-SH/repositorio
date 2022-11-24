@@ -1,7 +1,8 @@
-public class Iterativos extends SimpleProcess{
+package scheduler.processing;
+public class LoopProcess extends SimpleProcess{
  
 
-    public Iterativos(int id){
+    public LoopProcess(int id){
         super(id, SimpleProcess.IterativoTime);
         this.nombre= "Iterativo";
         System.out.println("Se agrego nuevo proceso: Iterativo.  Id:"+ id );

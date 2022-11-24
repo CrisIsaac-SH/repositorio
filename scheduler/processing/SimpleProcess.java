@@ -1,3 +1,4 @@
+package scheduler.processing;
 /** 
 	Esta clase representa la definicion abstracta de un proceso simple, el
         cual solo se compone de un id o numero de identificacion. Todas las clases 
@@ -8,11 +9,11 @@
 public abstract class SimpleProcess {
 	/** El campo id es un entero que identifica al proceso, los ids son correlativos por politica
         **/
-	protected int id;
+	public int id;
 	///////
-	protected double time;
-	protected double original;
-	protected String nombre;
+	public double time;
+	public double original;
+	public String nombre;
 
 	public boolean isFree;
 	

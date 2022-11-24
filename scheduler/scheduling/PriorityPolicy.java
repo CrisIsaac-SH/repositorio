@@ -1,3 +1,4 @@
+package scheduler.scheduling;
 
 //input/output
 //aritmetico
@@ -5,12 +6,18 @@
 //iterativos
 import java.util.concurrent.*;
 
+import scheduler.processing.ArithmeticProcess;
+import scheduler.processing.ConditionalProcess;
+import scheduler.processing.InputOutputProcess;
+import scheduler.processing.LoopProcess;
+import scheduler.processing.SimpleProcess;
+
 public class PriorityPolicy extends Policy {
 
-    private ConcurrentLinkedQueue<SimpleProcess> priority1;
-    private ConcurrentLinkedQueue<SimpleProcess> priority2;
-    private ConcurrentLinkedQueue<SimpleProcess> priority3;
-    private ConcurrentLinkedQueue<SimpleProcess> priority4;
+    public ConcurrentLinkedQueue<SimpleProcess> priority1;
+    public ConcurrentLinkedQueue<SimpleProcess> priority2;
+    public ConcurrentLinkedQueue<SimpleProcess> priority3;
+    public ConcurrentLinkedQueue<SimpleProcess> priority4;
 
     public PriorityPolicy() {
 
@@ -24,13 +31,13 @@ public class PriorityPolicy extends Policy {
     @Override
     public synchronized void add(SimpleProcess p) {
 
-        if (p instanceof InputOutput) {
+        if (p instanceof InputOutputProcess) {
             priority1.add(p);
-        } else if (p instanceof Aritmetico) {
+        } else if (p instanceof ArithmeticProcess) {
             priority2.add(p);
-        } else if (p instanceof Condicionales) {
+        } else if (p instanceof ConditionalProcess) {
             priority3.add(p);
-        } else if (p instanceof Iterativos) {
+        } else if (p instanceof LoopProcess) {
             priority4.add(p);
         } 
         
@@ -42,13 +49,13 @@ public class PriorityPolicy extends Policy {
 
     @Override
     public void remove(SimpleProcess p) {
-        if (p instanceof InputOutput) {
+        if (p instanceof InputOutputProcess) {
             priority1.remove(p);
-        } else if (p instanceof Aritmetico) {
+        } else if (p instanceof ArithmeticProcess) {
             priority2.remove(p);
-        } else if (p instanceof Condicionales) {
+        } else if (p instanceof ConditionalProcess) {
             priority3.remove(p);
-        } else if (p instanceof Iterativos) {
+        } else if (p instanceof LoopProcess) {
             priority4.remove(p);
         }
     }

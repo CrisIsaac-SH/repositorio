@@ -1,3 +1,6 @@
+package scheduler.scheduling;
+import scheduler.processing.SimpleProcess;
+
 /** 
 	Interfaz que deben implementar todas las clases que quieren
         comportarse como politicas de calendarizacion de procesos.

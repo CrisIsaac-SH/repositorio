@@ -1,11 +1,14 @@
+package scheduler.scheduling;
 import java.io.Console;
 import java.util.concurrent.*;
 
 import javax.swing.plaf.synth.SynthCheckBoxMenuItemUI;
 
+import scheduler.processing.SimpleProcess;
+
 public class FCFS extends Policy {
 
-    private ConcurrentLinkedQueue<SimpleProcess> mainQue;
+    public ConcurrentLinkedQueue<SimpleProcess> mainQue;
 
     public FCFS() {
 

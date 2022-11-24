@@ -1,9 +1,12 @@
+package scheduler.scheduling;
 import java.io.Console;
 import java.util.Stack;
 
+import scheduler.processing.SimpleProcess;
+
 public class LCFS extends Policy {
 
-    private Stack<SimpleProcess> mainStack;
+    public Stack<SimpleProcess> mainStack;
 
     public LCFS() {
         mainStack = new Stack<SimpleProcess>();

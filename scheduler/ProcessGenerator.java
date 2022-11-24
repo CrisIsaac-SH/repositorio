@@ -1,12 +1,20 @@
+package scheduler;
 import java.util.*;
+
+import scheduler.processing.ArithmeticProcess;
+import scheduler.processing.ConditionalProcess;
+import scheduler.processing.InputOutputProcess;
+import scheduler.processing.LoopProcess;
+import scheduler.processing.SimpleProcess;
+import scheduler.scheduling.Policy;
 
 public class ProcessGenerator implements Runnable {
 
-    private Policy policy;
-    private static int contad = 0;
+    public Policy policy;
+    public static int contad = 0;
     public static boolean generating = true;
-    private double tiempoIni;
-    private double timepoFin;
+    public double tiempoIni;
+    public double timepoFin;
 
     public ProcessGenerator(Policy policy, double tiempoIni, double timepoFin) {
         this.policy = policy;
@@ -25,19 +33,19 @@ public class ProcessGenerator implements Runnable {
             int numero = (int) (Math.random() * (4 - 1 + 1) + 1);
             switch (numero) {
                 case 1:
-                    newRandomProcess = new Aritmetico(contad);
+                    newRandomProcess = new ArithmeticProcess(contad);
                     break;
 
                 case 2:
-                    newRandomProcess = new InputOutput(contad);
+                    newRandomProcess = new InputOutputProcess(contad);
                     break;
 
                 case 3:
-                    newRandomProcess = new Condicionales(contad);
+                    newRandomProcess = new ConditionalProcess(contad);
                     break;
 
                 case 4:
-                    newRandomProcess = new Iterativos(contad);
+                    newRandomProcess = new LoopProcess(contad);
                     break;
             }
             this.policy.add(newRandomProcess);

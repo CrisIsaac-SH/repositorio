@@ -1,5 +1,9 @@
+package scheduler.scheduling;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedDeque;
+
+import scheduler.processing.SimpleProcess;
+
 import java.util.concurrent.*;
 
 /** 
@@ -19,12 +23,12 @@ import java.util.concurrent.*;
 	/** El campo size va a representar el numero de procesos activos, 
 	es decir en la cola actualmente, en este momento 
         **/
-	protected int size;
+	public int size;
 	/** El campo total va a representar el total de procesos que han sido ingresados a
         la cola **/
-	protected int totalProcesses;
+	public int totalProcesses;
 
-	protected int waitingForProcess;
+	public int waitingForProcess;
 	/**
 		Inicializa el Policy con size = 0 y totalProcesses = 0.
 	**/		

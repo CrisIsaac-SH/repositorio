@@ -1,12 +1,15 @@
+package scheduler.scheduling;
 import java.io.Console;
 import java.util.concurrent.*;
 
 import javax.swing.plaf.synth.SynthCheckBoxMenuItemUI;
 
+import scheduler.processing.SimpleProcess;
+
 public class RoundRobin extends Policy {
 
-    private ConcurrentLinkedQueue<SimpleProcess> roundQue;
-    private double quatum;
+    public ConcurrentLinkedQueue<SimpleProcess> roundQue;
+    public double quatum;
 
     public RoundRobin(Double quatum) {
         roundQue = new ConcurrentLinkedQueue<SimpleProcess>();
