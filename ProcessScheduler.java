@@ -28,7 +28,7 @@ public class ProcessScheduler {
         Policy politica1 = new RoundRobin(1.0);
 
         // Server servidor = new Server(politica1);
-        ProcessGenerator generador = new ProcessGenerator(politica1);
+        ProcessGenerator generador = new ProcessGenerator(politica1, 1,3);
         Server servidor1 = new Server(politica1);
         // politica1.add(aritmetico);
         // politica1.add(inputOutput);

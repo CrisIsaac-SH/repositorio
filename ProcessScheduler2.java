@@ -5,10 +5,11 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.*;
 import java.util.regex.Pattern;
 
-public class ProcessScheduler {
+public class ProcessScheduler2 {
     public static void main(String[] args) throws Exception {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        br.readLine();
 
         if (args[0].equals("-fcfs")) {
             double str1 = Double.parseDouble(args[1].substring(0, 3));
@@ -189,10 +190,12 @@ public class ProcessScheduler {
             t2.start();
         }
         String parar = br.readLine();
-        if (parar == "q") {
+        System.out.println("FINALLLL DEL PROCESADOR " + parar);
+        if (parar.trim().equals("q")) {
+            ProcessGenerator.generating = false;
             System.out.println("sda");
         } else {
-            ProcessGenerator.generating = true;
+            
         }
     }
 
