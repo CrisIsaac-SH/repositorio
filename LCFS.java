@@ -90,7 +90,7 @@ public class LCFS extends Policy {
     }
 
     @Override
-    public void finishPolicy() {
+    public synchronized void finishPolicy() {
         notifyAll();
 
     }
