@@ -5,14 +5,14 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.*;
 import java.util.regex.Pattern;
 
-public class ProcessScheduler2 {
+public class ProcessScheduler {
     public static void main(String[] args) throws Exception {
 
-        double str1 = Double.parseDouble(args[1].substring(0, 3));
-        double str2 = Double.parseDouble(args[1].substring(4, 7));
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         if (args[0].equals("-fcfs")) {
-
+            double str1 = Double.parseDouble(args[1].substring(0, 3));
+            double str2 = Double.parseDouble(args[1].substring(4, 7));
             SimpleProcess.AritmethicTime = Double.parseDouble(args[2]);
             SimpleProcess.IOTime = Double.parseDouble(args[3]);
             SimpleProcess.ConditionalTime = Double.parseDouble(args[4]);
@@ -29,6 +29,8 @@ public class ProcessScheduler2 {
         }
 
         else if (args[0].equals("-lcfs")) {
+            double str1 = Double.parseDouble(args[1].substring(0, 3));
+            double str2 = Double.parseDouble(args[1].substring(4, 7));
             SimpleProcess.AritmethicTime = Double.parseDouble(args[2]);
             SimpleProcess.IOTime = Double.parseDouble(args[3]);
             SimpleProcess.ConditionalTime = Double.parseDouble(args[4]);
@@ -49,11 +51,13 @@ public class ProcessScheduler2 {
         }
 
         else if (args[0].equals("-rr")) {
-            SimpleProcess.AritmethicTime = Double.parseDouble(args[3]);
-            SimpleProcess.IOTime = Double.parseDouble(args[4]);
-            SimpleProcess.ConditionalTime = Double.parseDouble(args[5]);
-            SimpleProcess.IterativoTime = Double.parseDouble(args[6]);
-            double quantum = Double.parseDouble(args[7]);
+            double str1 = Double.parseDouble(args[1].substring(0, 3));
+            double str2 = Double.parseDouble(args[1].substring(4, 7));
+            SimpleProcess.AritmethicTime = Double.parseDouble(args[2]);
+            SimpleProcess.IOTime = Double.parseDouble(args[3]);
+            SimpleProcess.ConditionalTime = Double.parseDouble(args[4]);
+            SimpleProcess.IterativoTime = Double.parseDouble(args[5]);
+            double quantum = Double.parseDouble(args[6]);
 
             Policy politica1 = new RoundRobin(quantum);
             ProcessGenerator generador = new ProcessGenerator(politica1, str1, str2);
@@ -70,6 +74,8 @@ public class ProcessScheduler2 {
         }
 
         else if (args[0].equals("-pp")) {
+            double str1 = Double.parseDouble(args[1].substring(0, 3));
+            double str2 = Double.parseDouble(args[1].substring(4, 7));
             SimpleProcess.AritmethicTime = Double.parseDouble(args[2]);
             SimpleProcess.IOTime = Double.parseDouble(args[3]);
             SimpleProcess.ConditionalTime = Double.parseDouble(args[4]);
@@ -95,6 +101,8 @@ public class ProcessScheduler2 {
              * tiempo2 = Double.parseDouble(args[2].substring(2, 5));
              * }
              */
+            double str1 = Double.parseDouble(args[2].substring(0, 3));
+            double str2 = Double.parseDouble(args[2].substring(4, 7));
             SimpleProcess.AritmethicTime = Double.parseDouble(args[3]);
             SimpleProcess.IOTime = Double.parseDouble(args[4]);
             SimpleProcess.ConditionalTime = Double.parseDouble(args[5]);
@@ -115,6 +123,8 @@ public class ProcessScheduler2 {
         }
 
         else if (args[0].equals("-dual") && args[1].equals("-lcfs")) {
+            double str1 = Double.parseDouble(args[2].substring(0, 3));
+            double str2 = Double.parseDouble(args[2].substring(4, 7));
             SimpleProcess.AritmethicTime = Double.parseDouble(args[3]);
             SimpleProcess.IOTime = Double.parseDouble(args[4]);
             SimpleProcess.ConditionalTime = Double.parseDouble(args[5]);
@@ -135,6 +145,8 @@ public class ProcessScheduler2 {
             t2.start();
 
         } else if (args[0].equals("-dual") && args[1].equals("-rr")) {
+            double str1 = Double.parseDouble(args[2].substring(0, 3));
+            double str2 = Double.parseDouble(args[2].substring(4, 7));
             SimpleProcess.AritmethicTime = Double.parseDouble(args[3]);
             SimpleProcess.IOTime = Double.parseDouble(args[4]);
             SimpleProcess.ConditionalTime = Double.parseDouble(args[5]);
@@ -155,6 +167,8 @@ public class ProcessScheduler2 {
             t.start();
             t2.start();
         } else if (args[0].equals("-dual") && args[1].equals("-pp")) {
+            double str1 = Double.parseDouble(args[2].substring(0, 3));
+            double str2 = Double.parseDouble(args[2].substring(4, 7));
             SimpleProcess.AritmethicTime = Double.parseDouble(args[3]);
             SimpleProcess.IOTime = Double.parseDouble(args[4]);
             SimpleProcess.ConditionalTime = Double.parseDouble(args[5]);
@@ -173,6 +187,12 @@ public class ProcessScheduler2 {
             Thread.sleep(100);
             t.start();
             t2.start();
+        }
+        String parar = br.readLine();
+        if (parar == "q") {
+            System.out.println("sda");
+        } else {
+            ProcessGenerator.generating = true;
         }
     }
 
